@@ -46,24 +46,28 @@ const NavBar = ({ history }) => {
             Admin Dashboard
           </Link>
         </li>
-        <li className="nav-item">
-          <Link
-            style={currentTab(history, "/signup")}
-            className="nav-link"
-            to="/signup"
-          >
-            Signup
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            style={currentTab(history, "/signin")}
-            className="nav-link"
-            to="/signin"
-          >
-            Sign In
-          </Link>
-        </li>
+        {!isAuthenticated() && (
+          <>
+            <li className="nav-item">
+              <Link
+                style={currentTab(history, "/signup")}
+                className="nav-link"
+                to="/signup"
+              >
+                Signup
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                style={currentTab(history, "/signin")}
+                className="nav-link"
+                to="/signin"
+              >
+                Sign In
+              </Link>
+            </li>
+          </>
+        )}
         {isAuthenticated() && (
           <li className="nav-item">
             <span
