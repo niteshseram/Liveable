@@ -13,7 +13,7 @@ const Cart = () => {
     setProducts(loadCart());
   }, [reload]);
 
-  const loadAllProduct = () => {
+  const loadAllProduct = (products) => {
     return (
       <div>
         <h2>This section is load products</h2>
@@ -45,10 +45,16 @@ const Cart = () => {
 
   return (
     <Base title="Cart Page" description="Ready to checkout">
-      <div className="row">
-        <div className="col-6">{loadAllProduct()}</div>
-        <div className="col-6">{loadCheckout()}</div>
-      </div>
+      {products && products.length > 0 ? (
+        <div className="row">
+          <div className="col-6">{loadAllProduct(products)}</div>
+          <div className="col-6">{loadCheckout()}</div>
+        </div>
+      ) : (
+        <div className="row">
+          <h3 className="text-white">Cart is empty!</h3>
+        </div>
+      )}
     </Base>
   );
 };
